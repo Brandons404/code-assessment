@@ -42,8 +42,6 @@ const BeerCard = ({ id, beerName, img, tagline, description, delay }) => {
   const { beerData, setBeer } = useBeer();
   const { show } = beerData;
 
-  console.log(show);
-
   React.useEffect(() => {
     setColor(getColor());
   }, []);

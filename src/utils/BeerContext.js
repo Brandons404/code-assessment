@@ -8,9 +8,7 @@ import styled from '@mui/system/styled';
 /* TODO
 -ADD CONTENT TO MODAL
 
--ADD WORKING PAGNATION
 -MAKE DEFINED "X" BUTTON TO CLOSE MODAL
--WRITE COMPONENT TESTS
  */
 
 const defaultData = {

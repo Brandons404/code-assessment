@@ -7,8 +7,6 @@ function App() {
   const { show } = beerData;
 
   const lockStyles = {
-    // position: show ? 'fixed' : '',
-    // top: show ? `-${window.scrollY}px` : '',
     paddingRight: show ? '16px' : '',
   };
 

@@ -2,21 +2,24 @@ import React from 'react';
 import Box from '@mui/material/Grid';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
+import Paper from '@mui/material/Paper';
+import Pagination from '@mui/material/Pagination';
 
 import BeerCard from './BeerCard';
-
-// constants
-const beersUrl = 'https://api.punkapi.com/v2/beers?page=4&per_page=20';
+import { useBeer } from '../utils/useBeer';
 
 const Beers = () => {
   const [allBeers, setAllBeers] = React.useState([]);
+  const { beerData } = useBeer();
+  const { show } = beerData;
 
-  const fetchBeers = async () => {
+  const fetchBeers = async (page) => {
+    const beersUrl = `https://api.punkapi.com/v2/beers?page=${page}&per_page=20`;
+
     try {
       const response = await fetch(beersUrl);
       const beers = await response.json();
       setAllBeers(beers);
-      console.log(beers);
     } catch (e) {
       if (process.env.NODE_ENV === 'development') throw new Error(e);
     }
@@ -36,8 +39,12 @@ const Beers = () => {
   );
 
   React.useEffect(() => {
-    fetchBeers();
+    fetchBeers(1);
   }, []);
+
+  const handlePageChange = (e, page) => {
+    fetchBeers(page);
+  };
 
   return (
     <Box
@@ -60,6 +67,18 @@ const Beers = () => {
           </Grid>
         ))}
       </Grid>
+      <Paper
+        elevation={3}
+        sx={{
+          background: 'white',
+          position: 'fixed',
+          bottom: 16,
+          left: '50%',
+          transform: 'translate(-50%, 0)',
+        }}
+      >
+        <Pagination count={10} hidden={show} onChange={handlePageChange} />
+      </Paper>
     </Box>
   );
 };
