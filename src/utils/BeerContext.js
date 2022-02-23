@@ -38,6 +38,7 @@ export const BeerContext = createContext();
 
 const closeIcon = {
   cursor: 'pointer',
+  zIndex: 1100,
   aspectRatio: '1 / 1',
   padding: '8px 8px 0px 8px',
   transition: 'all ease-out 0.3s',
@@ -88,6 +89,9 @@ export const BeerProvider = ({ children }) => {
   return (
     <BeerContext.Provider value={{ beerData, setBeer, handleClose }}>
       <Backdrop open={show} onClick={handleClose} sx={{ zIndex: 999 }}>
+        <Box position='absolute' top={0} right={0} m={1} sx={closeIcon}>
+          <img src='https://www.svgrepo.com/show/12848/x-symbol.svg' alt='close' width='25px' />
+        </Box>
         <Paper
           elevation={6}
           sx={{
@@ -104,9 +108,6 @@ export const BeerProvider = ({ children }) => {
             zIndex: 1000,
           }}
         >
-          <Box position='absolute' top={0} right={0} m={1} sx={closeIcon}>
-            <img src='https://www.svgrepo.com/show/12848/x-symbol.svg' alt='close' width='25px' />
-          </Box>
           <Typography variant='h3' fontFamily='Poppins' fontWeight={900} my={8} color={textColor}>
             {beerName}
           </Typography>
