@@ -10,15 +10,13 @@ const AdditionalInfo = ({ textColor }) => {
 
   const { id, foodPairing, abv, firstBrewed } = beerData;
 
-  console.log(firstBrewed);
-
   return (
     <Grid
       container
       spacing={10}
       justifyContent='center'
       alignItems='baseline'
-      sx={{ minHeight: '250px', width: '80%', mx: 'auto', my: 20 }}
+      sx={{ minHeight: '250px', width: '80%', mx: 'auto', my: 10 }}
     >
       {foodPairing?.length && (
         <Grid item xs={3} sx={{ textAlign: 'left' }}>

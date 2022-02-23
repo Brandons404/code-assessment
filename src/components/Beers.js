@@ -13,8 +13,6 @@ const Beers = () => {
   const { beerData } = useBeer();
   const { show } = beerData;
 
-  console.log(allBeers);
-
   const fetchBeers = async (page) => {
     const beersUrl = `https://api.punkapi.com/v2/beers?page=${page}&per_page=20`;
 

@@ -9,7 +9,7 @@ const TitledContent = ({ title, body, color }) => {
       spacing={1}
       alignItems='flex-start'
       justifyContent='center'
-      sx={{ minHeight: '250px', width: '80%', mx: 'auto', my: 20 }}
+      sx={{ minHeight: '250px', width: '80%', mx: 'auto', mt: 20 }}
     >
       <Grid item xs={4} sx={{ textAlign: 'left' }}>
         <Typography variant='h3' fontFamily='Poppins' color={color} fontWeight={600}>

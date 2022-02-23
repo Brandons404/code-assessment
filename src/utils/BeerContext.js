@@ -9,10 +9,6 @@ import styled from '@mui/system/styled';
 import TitledContent from '../components/TitledContent';
 import AdditionalInfo from '../components/AdditionalInfo';
 
-/* TODO
--MAKE DEFINED "X" BUTTON TO CLOSE MODAL
- */
-
 const defaultData = {
   show: false,
   id: 0,
@@ -105,15 +101,11 @@ export const BeerProvider = ({ children }) => {
             transition: 'all ease-out 0.3s',
             transform: show ? 'scale(1)' : 'scale(0)',
             overflowY: 'scroll',
+            zIndex: 1000,
           }}
         >
           <Box position='absolute' top={0} right={0} m={1} sx={closeIcon}>
-            <img
-              src='https://www.svgrepo.com/show/12848/x-symbol.svg'
-              alt='X'
-              width='25px'
-              sx={{ border: '1px solid black' }}
-            />
+            <img src='https://www.svgrepo.com/show/12848/x-symbol.svg' alt='close' width='25px' />
           </Box>
           <Typography variant='h3' fontFamily='Poppins' fontWeight={900} my={8} color={textColor}>
             {beerName}
