@@ -13,6 +13,8 @@ const Beers = () => {
   const { beerData } = useBeer();
   const { show } = beerData;
 
+  console.log(allBeers);
+
   const fetchBeers = async (page) => {
     const beersUrl = `https://api.punkapi.com/v2/beers?page=${page}&per_page=20`;
 
@@ -28,13 +30,18 @@ const Beers = () => {
   // cut out unused data from API call
   const data = React.useMemo(
     () =>
-      allBeers?.map(({ id, name, tagline, image_url, description }) => ({
-        id,
-        beerName: name,
-        tagline,
-        img: image_url,
-        description,
-      })),
+      allBeers?.map(
+        ({ id, name, tagline, image_url, description, food_pairing, abv, first_brewed }) => ({
+          id,
+          beerName: name,
+          tagline,
+          img: image_url,
+          description,
+          foodPairing: food_pairing,
+          abv,
+          firstBrewed: first_brewed,
+        })
+      ),
     [allBeers]
   );
 

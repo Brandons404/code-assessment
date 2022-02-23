@@ -5,9 +5,10 @@ import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
 import styled from '@mui/system/styled';
 
-/* TODO
--ADD CONTENT TO MODAL
+import TitledContent from '../components/TitledContent';
+import AdditionalInfo from '../components/AdditionalInfo';
 
+/* TODO
 -MAKE DEFINED "X" BUTTON TO CLOSE MODAL
  */
 
@@ -27,6 +28,7 @@ const defaultData = {
 const CustomImg = styled('img')(({ theme }) => ({
   maxHeight: '50vh',
   paddingTop: theme.spacing(2),
+  marginBottom: theme.spacing(3),
   transition: 'all ease-in-out 0.4s',
   aspectRatio: '1 / 1',
 }));
@@ -39,8 +41,9 @@ export const BeerContext = createContext();
 
 export const BeerProvider = ({ children }) => {
   const [beerData, setBeerData] = useState(defaultData);
-  const { show, id, beerName, tagline, img, description, foodPairing, abv, firstBrewed, color } =
-    beerData;
+  const { show, beerName, tagline, img, description, color } = beerData;
+
+  const textColor = getTextColor(color);
 
   const setBeer = ({
     show = true,
@@ -93,16 +96,12 @@ export const BeerProvider = ({ children }) => {
             overflowY: 'scroll',
           }}
         >
-          <Typography
-            variant='h3'
-            fontFamily='Poppins'
-            fontWeight={900}
-            my={8}
-            color={getTextColor(color)}
-          >
+          <Typography variant='h3' fontFamily='Poppins' fontWeight={900} my={8} color={textColor}>
             {beerName}
           </Typography>
           <CustomImg src={img} alt={beerName} />
+          <TitledContent title={tagline} body={description} color={textColor} />
+          <AdditionalInfo textColor={textColor} />
         </Paper>
       </Backdrop>
       {children}

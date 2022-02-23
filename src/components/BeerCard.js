@@ -36,7 +36,17 @@ const containerProps = {
   },
 };
 
-const BeerCard = ({ id, beerName, img, tagline, description, delay }) => {
+const BeerCard = ({
+  id,
+  beerName,
+  img,
+  tagline,
+  description,
+  delay,
+  foodPairing,
+  abv,
+  firstBrewed,
+}) => {
   const [ready, setReady] = React.useState(false);
   const [color, setColor] = React.useState('#fff');
   const { beerData, setBeer } = useBeer();
@@ -51,7 +61,7 @@ const BeerCard = ({ id, beerName, img, tagline, description, delay }) => {
   }, delay);
 
   const handleClick = () => {
-    setBeer({ img, beerName, color });
+    setBeer({ img, beerName, color, tagline, description, foodPairing, abv, firstBrewed });
   };
 
   return (
