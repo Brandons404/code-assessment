@@ -3,6 +3,7 @@ import bodyScroll from 'body-scroll-toggle';
 import Backdrop from '@mui/material/Backdrop';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
+import Box from '@mui/material/Box';
 import styled from '@mui/system/styled';
 
 import TitledContent from '../components/TitledContent';
@@ -38,6 +39,16 @@ const getTextColor = (color) => {
 };
 
 export const BeerContext = createContext();
+
+const closeIcon = {
+  cursor: 'pointer',
+  aspectRatio: '1 / 1',
+  padding: '8px 8px 0px 8px',
+  transition: 'all ease-out 0.3s',
+  '&:hover': {
+    transform: 'rotate(90deg)',
+  },
+};
 
 export const BeerProvider = ({ children }) => {
   const [beerData, setBeerData] = useState(defaultData);
@@ -96,6 +107,14 @@ export const BeerProvider = ({ children }) => {
             overflowY: 'scroll',
           }}
         >
+          <Box position='absolute' top={0} right={0} m={1} sx={closeIcon}>
+            <img
+              src='https://www.svgrepo.com/show/12848/x-symbol.svg'
+              alt='X'
+              width='25px'
+              sx={{ border: '1px solid black' }}
+            />
+          </Box>
           <Typography variant='h3' fontFamily='Poppins' fontWeight={900} my={8} color={textColor}>
             {beerName}
           </Typography>
